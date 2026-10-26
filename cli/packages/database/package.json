@@ -1,0 +1,54 @@
+{
+  "name": "@prismcode543/database",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "files": [
+    "dist/src",
+    "generated",
+    "prisma/*.prisma"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
+    },
+    "./client": {
+      "import": "./dist/src/client.js",
+      "types": "./dist/src/client.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "bun run build:js && bun run build:types",
+    "build:js": "bun build ./src/index.ts --outdir=dist/src --target bun --format=esm && bun build ./src/client.ts --outdir=dist/src --target bun --format=esm",
+    "build:types": "bunx tsc --emitDeclarationOnly --outDir dist",
+    "db:generate": "bunx prisma generate",
+    "test": "bun test || echo 'No tests found'",
+    "prepublishOnly": "bun run build"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "prisma": "^7.7.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.17.3",
+    "@prisma/adapter-libsql": "^7.8.0",
+    "@prisma/adapter-pg": "^7.7.0",
+    "@prisma/client": "^7.7.0",
+    "dotenv": "^17.4.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j08451245-lab/PrismCode.git",
+    "directory": "cli/packages/database"
+  },
+  "bugs": {
+    "url": "https://github.com/j08451245-lab/PrismCode/issues"
+  },
+  "homepage": "https://github.com/j08451245-lab/PrismCode/tree/main/cli/packages/database#readme"
+}

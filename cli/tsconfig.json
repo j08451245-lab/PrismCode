@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "@opentui/react",
+    "types": ["bun"]
+  },
+  "include": [
+    "packages/server/src",
+    "packages/shared/src",
+    "packages/database/src",
+    "packages/database/generated",
+    "packages/cli/src",
+    "packages/mcp-server/src"
+  ],
+  "exclude": [
+    "packages/*/src/__tests__",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/test-utils.ts",
+    "node_modules",
+    "dist"
+  ]
+}

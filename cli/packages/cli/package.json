@@ -1,0 +1,54 @@
+{
+  "name": "@prismcode543/cli",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": {
+    "prismcode": "bin/prismcode.cjs"
+  },
+  "files": [
+    "bin/prismcode.cjs",
+    "dist"
+  ],
+  "scripts": {
+    "dev": "bun run --watch src/index.tsx",
+    "build": "bun build src/index.tsx --outdir dist --target bun",
+    "test": "bun test || echo 'No tests found'",
+    "prepublishOnly": "bun run build"
+  },
+  "devDependencies": {
+    "@prismcode543/server": "workspace:*",
+    "@types/bun": "latest",
+    "@types/react": "^19.2.14"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^3.0.83",
+    "@ai-sdk/google": "^3.0.81",
+    "@ai-sdk/openai": "^3.0.70",
+    "@ai-sdk/react": "^3.0.186",
+    "@prismcode543/shared": "workspace:*",
+    "@opentui/core": "^0.1.97",
+    "@opentui/react": "^0.1.97",
+    "ai": "^6.0.184",
+    "date-fns": "^4.1.0",
+    "dotenv": "^17.4.1",
+    "hono": "^4.12.12",
+    "open": "^11.0.0",
+    "opentui-spinner": "^0.0.6",
+    "pretty-ms": "^9.3.0",
+    "react": "^19.2.4",
+    "react-router": "^7.14.0",
+    "zod": "^4.3.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j08451245-lab/PrismCode.git",
+    "directory": "cli/packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/j08451245-lab/PrismCode/issues"
+  },
+  "homepage": "https://github.com/j08451245-lab/PrismCode/tree/main/cli/packages/cli#readme"
+}

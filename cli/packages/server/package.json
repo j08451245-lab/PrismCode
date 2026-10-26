@@ -1,0 +1,56 @@
+{
+  "name": "@prismcode543/server",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/index.js",
+    "dist/index.d.ts"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "build": "bun build src/index.ts --outdir dist --target bun",
+    "test": "bun test",
+    "prepublishOnly": "bun run build"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^3.0.68",
+    "@ai-sdk/google": "^3.0.82",
+    "@ai-sdk/groq": "^3.0.41",
+    "@ai-sdk/openai": "^3.0.52",
+    "@ai-sdk/openai-compatible": "^2.0.50",
+    "@ai-sdk/provider-utils": "^4.0.30",
+    "@clerk/backend": "^3.2.8",
+    "@hono/zod-validator": "^0.7.6",
+    "@polar-sh/sdk": "^0.47.1",
+    "@prismcode543/database": "workspace:*",
+    "@prismcode543/shared": "workspace:*",
+    "ai": "^6.0.154",
+    "dotenv": "^17.4.1",
+    "hono": "^4.12.12",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "typescript": "^5.8.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j08451245-lab/PrismCode.git",
+    "directory": "cli/packages/server"
+  },
+  "bugs": {
+    "url": "https://github.com/j08451245-lab/PrismCode/issues"
+  },
+  "homepage": "https://github.com/j08451245-lab/PrismCode/tree/main/cli/packages/server#readme"
+}

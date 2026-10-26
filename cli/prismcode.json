@@ -1,0 +1,19 @@
+{
+  "model": "deepseek-v4-flash-free",
+  "mode": "BUILD",
+  "maxSteps": 10,
+  "toolConfirmation": true,
+  "costEstimation": true,
+  "timeout": {
+    "bash": 30000,
+    "readFile": 10000
+  },
+  "ignore": ["node_modules", ".git", "dist", "build", ".next", ".cache"],
+  "mcpServers": [
+    {
+      "name": "test-server",
+      "command": "bun",
+      "args": ["run", "packages/cli/mcp-servers/test-server.ts"]
+    }
+  ]
+}

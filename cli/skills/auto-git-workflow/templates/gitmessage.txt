@@ -1,0 +1,7 @@
+# Conventional Commit Template
+# <type>(<scope>): <description>
+#
+# Types: feat, fix, chore, docs, refactor, perf, test, style, ci
+# Breaking: add ! after type: feat!(api): ...
+# Footer: Closes #123, Refs #456
+#

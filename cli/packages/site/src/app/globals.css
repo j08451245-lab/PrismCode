@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+@theme {
+  --color-black: #000000;
+  --color-neutral-950: #0a0a0a;
+  --color-neutral-900: #111111;
+  --color-neutral-800: #1a1a1a;
+  --color-neutral-700: #2a2a2a;
+  --color-neutral-600: #3a3a3a;
+  --color-neutral-500: #636363;
+  --color-neutral-400: #8a8a8a;
+  --color-neutral-300: #a1a1aa;
+  --color-neutral-200: #c1c1c6;
+  --color-neutral-100: #e1e1e6;
+  --color-neutral-50: #fafafa;
+  --color-prism: #fafafa;
+  --color-prism-dim: rgba(250, 250, 250, 0.04);
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #1a1a1a transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: #000;
+    color: #fafafa;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: rgba(250, 250, 250, 0.12);
+  }
+}
+
+@layer utilities {
+  .bg-dot-grid {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .bg-prism-pattern {
+    background-image: 
+      linear-gradient(30deg, rgba(250,250,250,0.015) 12%, transparent 12.5%, transparent 87%, rgba(250,250,250,0.015) 87.5%),
+      linear-gradient(150deg, rgba(250,250,250,0.015) 12%, transparent 12.5%, transparent 87%, rgba(250,250,250,0.015) 87.5%),
+      linear-gradient(30deg, rgba(250,250,250,0.015) 12%, transparent 12.5%, transparent 87%, rgba(250,250,250,0.015) 87.5%),
+      linear-gradient(150deg, rgba(250,250,250,0.015) 12%, transparent 12.5%, transparent 87%, rgba(250,250,250,0.015) 87.5%),
+      linear-gradient(60deg, rgba(250,250,250,0.01) 25%, transparent 25.5%, transparent 75%, rgba(250,250,250,0.01) 75%),
+      linear-gradient(60deg, rgba(250,250,250,0.01) 25%, transparent 25.5%, transparent 75%, rgba(250,250,250,0.01) 75%);
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+  }
+
+  .hero-radial {
+    background:
+      linear-gradient(115deg, rgba(34, 211, 238, 0.08) 0%, transparent 28%),
+      linear-gradient(245deg, rgba(16, 185, 129, 0.07) 0%, transparent 26%),
+      radial-gradient(ellipse 90% 42% at 50% 4%, rgba(250, 250, 250, 0.05), transparent 62%);
+  }
+
+  .bg-section-glow {
+    background:
+      radial-gradient(ellipse 60% 30% at 50% 100%, rgba(250, 250, 250, 0.02) 0%, transparent 100%);
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes beacon {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(2.5); opacity: 0; }
+  }
+
+  .animate-beacon {
+    animation: beacon 2.5s ease-out infinite;
+  }
+
+  .hover-card {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hover-card:hover {
+    transform: translateY(-2px);
+    border-color: #2a2a2a;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-stage {
+    perspective: 1200px;
+  }
+
+  .command-deck {
+    transform-style: preserve-3d;
+    animation: deck-float 9s ease-in-out infinite;
+  }
+
+  .deck-panel {
+    position: absolute;
+    inset: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.02);
+    transform: translate3d(22px, 28px, -60px) rotateX(12deg) rotateY(-12deg);
+  }
+
+  .deck-panel-back {
+    inset: 42px 16px -20px 54px;
+    background:
+      linear-gradient(135deg, rgba(34, 211, 238, 0.08), rgba(16, 185, 129, 0.03)),
+      rgba(255, 255, 255, 0.015);
+  }
+
+  .deck-panel-mid {
+    inset: 28px 42px 8px 26px;
+    transform: translate3d(-20px, 22px, -36px) rotateX(10deg) rotateY(-10deg);
+  }
+
+  .prism-core {
+    position: absolute;
+    right: -8px;
+    top: -34px;
+    height: 112px;
+    width: 112px;
+    transform-style: preserve-3d;
+    animation: prism-spin 12s linear infinite;
+  }
+
+  .prism-core-face {
+    position: absolute;
+    inset: 18px;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background:
+      linear-gradient(135deg, rgba(34, 211, 238, 0.25), rgba(255, 255, 255, 0.06) 45%, rgba(16, 185, 129, 0.18));
+    box-shadow: 0 0 48px rgba(34, 211, 238, 0.12);
+  }
+
+  .prism-core-face-a {
+    transform: rotateY(0deg) translateZ(28px);
+  }
+
+  .prism-core-face-b {
+    transform: rotateY(60deg) translateZ(28px);
+  }
+
+  .prism-core-face-c {
+    transform: rotateX(60deg) translateZ(28px);
+  }
+
+  @keyframes deck-float {
+    0%, 100% { transform: rotateX(2deg) rotateY(-7deg) translateY(0); }
+    50% { transform: rotateX(4deg) rotateY(-3deg) translateY(-8px); }
+  }
+
+  @keyframes prism-spin {
+    from { transform: rotateX(58deg) rotateZ(0deg); }
+    to { transform: rotateX(58deg) rotateZ(360deg); }
+  }
+}

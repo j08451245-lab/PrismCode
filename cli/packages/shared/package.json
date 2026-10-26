@@ -1,0 +1,45 @@
+{
+  "name": "@prismcode543/shared",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build:js": "bun build ./src/index.ts --outdir ./dist --target node --format esm --external zod --external ai",
+    "build:types": "tsc --emitDeclarationOnly --project tsconfig.json",
+    "build": "bun run build:js && bun run build:types",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "bun run build"
+  },
+  "dependencies": {
+    "ai": "^6.0.184",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "typescript": "^5.8.3",
+    "vitest": "^4.1.9"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j08451245-lab/PrismCode.git",
+    "directory": "cli/packages/shared"
+  },
+  "bugs": {
+    "url": "https://github.com/j08451245-lab/PrismCode/issues"
+  },
+  "homepage": "https://github.com/j08451245-lab/PrismCode/tree/main/cli/packages/shared#readme"
+}

@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+# prismcode — Bun CLI wrapper
+if command -v bun > /dev/null 2>&1; then
+  exec bun run "$(dirname "$0")/../dist/index.js" "$@"
+else
+  echo "Error: prismcode requires Bun to run."
+  echo "Install it: https://bun.sh/docs/installation"
+  exit 1
+fi
