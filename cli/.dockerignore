@@ -1,0 +1,9 @@
+node_modules
+.git
+*.md
+.env
+.env.*
+dist
+.cache
+**/node_modules
+packages/database/prisma/prismcode.db

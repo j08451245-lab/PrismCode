@@ -1,0 +1,41 @@
+name: Publish to npm
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bun run --cwd packages/database db:generate
+
+      - name: Build shared
+        run: bun run --cwd packages/shared build
+
+      - name: Build database
+        run: bun run --cwd packages/database build
+
+      - name: Build server
+        run: bun run --cwd packages/server build
+
+      - name: Build mcp-server
+        run: bun run --cwd packages/mcp-server build
+
+      - name: Build CLI
+        run: bun run --cwd packages/cli build
+
+      - name: Publish to npm
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          bun publish --access public --cwd packages/shared
+          bun publish --access public --cwd packages/database
+          bun publish --access public --cwd packages/server
+          bun publish --access public --cwd packages/mcp-server
+          bun publish --access public --cwd packages/cli
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

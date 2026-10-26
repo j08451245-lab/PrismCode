@@ -1,0 +1,46 @@
+{
+  "name": "auto-git-workflow",
+  "version": "1.0.0",
+  "displayName": "Auto Git Workflow",
+  "description": "Enforces structured git practices: conventional commits, branch-per-feature, automatic change summaries",
+  "author": "PrismCode",
+  "license": "MIT",
+  "instructions": "instructions.md",
+  "tools": [
+    {
+      "name": "generateCommitMessage",
+      "description": "Analyzes staged changes and generates a conventional commit message following the Conventional Commits spec",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "scope": { "type": "string", "description": "Optional scope of the change (e.g. api, cli, ui)" },
+          "breaking": { "type": "boolean", "description": "Whether this commit has breaking changes" }
+        }
+      },
+      "implementation": "tools/generate-commit.ts"
+    },
+    {
+      "name": "squashAndMerge",
+      "description": "Squashes all commits in the current branch into a single commit with a well-formatted message, then suggests merge strategy",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "branch": { "type": "string", "description": "Target branch to merge into (default: main)" },
+          "message": { "type": "string", "description": "Optional custom squash message" }
+        }
+      }
+    }
+  ],
+  "templates": [
+    "templates/gitmessage.txt"
+  ],
+  "dependencies": [],
+  "constraints": {
+    "modes": ["BUILD"],
+    "filePatterns": [".git/"]
+  },
+  "triggers": {
+    "keywords": ["commit", "git", "pr", "merge", "branch", "conventional"],
+    "events": ["pre-commit", "post-commit"]
+  }
+}
